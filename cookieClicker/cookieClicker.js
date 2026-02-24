@@ -45,7 +45,7 @@ moreClicks.addEventListener("click", function () {
 });
 
 grandmaClicks.addEventListener("click", function () {
-    let basecost=10
+    let basecost=100
     const upgradeCost = Math.floor(grandmas===0 ? basecost: (basecost * Math.pow(grandmas+1,1.15)))
 
     if (cookies >= upgradeCost) {
@@ -60,7 +60,7 @@ grandmaClicks.addEventListener("click", function () {
 });
 
 factoryClicks.addEventListener("click", function () {
-    let basecost=500
+    let basecost=1500
     const upgradeCost = factory===0 ? basecost: (basecost * Math.pow(factory+1,1.15))
 
     if (cookies >= upgradeCost) {
@@ -76,7 +76,7 @@ factoryClicks.addEventListener("click", function () {
 
 
 farmClicks.addEventListener("click", function () {
-    let basecost=100
+    let basecost=500
     const upgradeCost = farm===0 ? basecost: (basecost * Math.pow(farm+1,1.15))
 
     if (cookies >= upgradeCost) {
@@ -91,7 +91,7 @@ farmClicks.addEventListener("click", function () {
 });
 
 portalClicks.addEventListener("click", function () {
-    let basecost=1000
+    let basecost=5000
     const upgradeCost = portal===0 ? basecost: (basecost * Math.pow(portal+1,1.15))
 
     if (cookies >= upgradeCost) {
@@ -110,8 +110,8 @@ portalClicks.addEventListener("click", function () {
 function produceCookies() {
     cookies += grandmas;
     cookies += farm*5;
-    cookies += factory*10;
-    cookies += portal*50;
+    cookies += factory*20;
+    cookies += portal*100;
     updateDisplay();
 }
 
