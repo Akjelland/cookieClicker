@@ -5,16 +5,21 @@ const grandmaClicks = document.getElementById("grandmaClicks");
 const farmClicks = document.getElementById("farmClicks");
 const counters = document.querySelectorAll(".counters")
 const cost = document.querySelectorAll(".cost")
+const cps = document.getElementById("cps")
 
 let cookies = 0; 
 let clickPower = 1; 
 let grandmas = 0;  
 let factory = 0
 let farm = 0;
+let totalCPS = 0;
 
 
 function updateDisplay() {
     outputValue.textContent = Math.floor(cookies);
+}
+function updateCPS() {
+    cps.textContent = `Total CPS: ${Math.floor(totalCPS)}`;
 }
 
 
@@ -44,6 +49,8 @@ grandmaClicks.addEventListener("click", function () {
     if (cookies >= upgradeCost) {
         cookies -= upgradeCost;
         grandmas += 1;
+        totalCPS += 1;
+        updateCPS()
         updateDisplay();
         counters[1].textContent=`Total Grandmas: ${grandmas}`
         cost[1].textContent=`Cost of Next Grandma: ${Math.floor(basecost * Math.pow(grandmas+1, 1.15))}`
@@ -57,6 +64,8 @@ factoryClicks.addEventListener("click", function () {
     if (cookies >= upgradeCost) {
         cookies -= upgradeCost;
         factory += 1;
+        totalCPS += 10;
+        updateCPS()
         updateDisplay();
         counters[3].textContent=`Total Factorys: ${factory}`
         cost[3].textContent=`Cost of Next Factory: ${Math.floor(basecost * Math.pow(factory+1, 1.15))}`
@@ -71,6 +80,8 @@ farmClicks.addEventListener("click", function () {
     if (cookies >= upgradeCost) {
         cookies -= upgradeCost;
         farm += 1;
+        totalCPS +=5;
+        updateCPS()
         updateDisplay();
         counters[2].textContent=`Total Farms: ${farm}`
         cost[2].textContent=`Cost of Next Farm: ${Math.floor(basecost * Math.pow(farm+1, 1.15))}`
@@ -85,5 +96,6 @@ function produceCookies() {
     cookies += factory*10;
     updateDisplay();
 }
+
 
 setInterval(produceCookies, 1000);
