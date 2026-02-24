@@ -66,13 +66,18 @@ body {
     align-items: center;
 }
 
+.button {
+    background-color: beige;
+    color: black;
+}
+
 .upgradeSection {
     position: absolute;
     right: 0;
     top: 100px;
     width: 400px;
     border: solid;
-
+    background-color: white;
     display: flex;
     flex-direction: column;
     gap: 10px; 

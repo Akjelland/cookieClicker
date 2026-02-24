@@ -3,6 +3,7 @@ const outputValue = document.getElementById("result");
 const moreClicks = document.getElementById("moreClicks");
 const grandmaClicks = document.getElementById("grandmaClicks");
 const farmClicks = document.getElementById("farmClicks");
+const portalClicks = document.getElementById("portalClicks")
 const counters = document.querySelectorAll(".counters")
 const cost = document.querySelectorAll(".cost")
 const cps = document.getElementById("cps")
@@ -12,6 +13,7 @@ let clickPower = 1;
 let grandmas = 0;  
 let factory = 0
 let farm = 0;
+let portal = 0;
 let totalCPS = 0;
 
 
@@ -88,12 +90,28 @@ farmClicks.addEventListener("click", function () {
     }
 });
 
+portalClicks.addEventListener("click", function () {
+    let basecost=1000
+    const upgradeCost = portal===0 ? basecost: (basecost * Math.pow(portal+1,1.15))
+
+    if (cookies >= upgradeCost) {
+        cookies -= upgradeCost;
+        portal += 1;
+        totalCPS +=50;
+        updateCPS()
+        updateDisplay();
+        counters[4].textContent=`Total Portals: ${portal}`
+        cost[4].textContent=`Cost of Next Portal: ${Math.floor(basecost * Math.pow(portal+1, 1.15))}`
+    }
+});
+
 
 
 function produceCookies() {
     cookies += grandmas;
     cookies += farm*5;
     cookies += factory*10;
+    cookies += portal*50;
     updateDisplay();
 }
 
