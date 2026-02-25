@@ -162,10 +162,11 @@ function produceCookies() {
     updateDisplay();
     calcTotalCPS();
 }
-cookies+=10000000
+
 addUpgrade();
 addUpgrade(50000,farmPower,upgrade2nd,upgrade2);
 addUpgrade(200000,factoryPower,upgrade3rd,upgrade3);
 addUpgrade(800000,portalPower,upgrade4th,upgrade4);
 setInterval(produceCookies, 1000);
+
 setInterval(makeCookieProgressBar, 500);
