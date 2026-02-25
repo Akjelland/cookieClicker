@@ -9,7 +9,8 @@
     </head>
     <body class="background"> 
         <h1>Cookie Clicker</h1>
-        <div class="upgradeSection">
+        <div class="buildingSection">
+            <p class="buildingHeader">Buildings</p>
             <button class="button" id="moreClicks">Extra Cursors</button>
             <p class = "counters" id="counters">Total Click power: 1</p>
             <p class = "cost" id="cost">Cost of Next Click power: 5 </p>
@@ -26,13 +27,30 @@
             <p class = "counters" id="counters">Total Portals: 0</p>
             <p class = "cost" id="cost">Cost of Next Portal: 5000</p>
         </div>
+        <div class="upgradeSection">
+            <p class="buildingHeader">Upgrades</p>
+            <button class="button upgrade1" id="upgrade1st">Bingo Nights!</button>
+            <p class = "description upgrade1">Grandmas now work twice as fast!</p>
+            <p class = "cost upgrade1">Cost of Bingo Nights: 10000</p>
+            <button class="button upgrade2" id="upgrade2nd">Fertile Soil!</button>
+            <p class = "description upgrade2">Farms now work twice as fast!</p>
+            <p class = "cost upgrade2">Cost of Fertile Soil: 50000</p>
+            <button class="button upgrade3" id="upgrade3rd">Oiled Machines!</button>
+            <p class = "description upgrade3">Factorys now work twice as fast!</p>
+            <p class = "cost upgrade3">Cost of Oiled Machines: 200000</p>
+            <button class="button upgrade4" id="upgrade4th">Effiecient Portals</button>
+            <p class = "description upgrade4">Portals now work twice as fast!</p>
+            <p class = "cost upgrade4">Cost of Efficient Portals: 800000</p>
+
+        </div>
         <div class="centerSection">
             <p class="amtCookies">Cookies: <span id="result">0</span></p>
             <p class="cps" id="cps">Total CPS: 0</p>
-            <button class="cookieClicker" id="cookieClicker"></button>
+            <div class="progress-container">
+                <div class="progress-bar2" id="progressBar"></div>
+            </div>
+            <div class="cookieGap"><button class="cookieClicker" id="cookieClicker"></button></div>
         </div>
         <script src="index.js"></script>
     </body>
 </html>
-
-
