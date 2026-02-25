@@ -30,6 +30,12 @@ let grandmaPower = 1;
 let factoryPower = 1;
 let farmPower = 1;
 let portalPower = 1;
+const powerSys = [1,1,1,1]
+const powerList = ["grandmaPower","farmPower","factoryPower","portalPower"];
+
+// if (document.getElementById("upgrade1st")===undefined) {
+//         grandmaPower*=2
+// }
 
 function loopthrough(loopedvar) {
     for (let i=0;i<loopedvar.length;i++) {
@@ -121,20 +127,33 @@ portalClicks.addEventListener("click", function () {
         cost[4].textContent=`Cost of Next Portal: ${Math.floor(basecost * Math.pow(portal+1, 1.15))}`
     }
 });
+if (powerList.includes("1")) {
+    console.log("testing")
+}
 
-
-
-function addUpgrade(cost=10000,powerSys=grandmaPower,upgradeVar=upgrade1st,loopedVar=upgrade1) {
+function addUpgrade(cost=10000,scaler="grandmaPower",upgradeVar=upgrade1st,loopedVar=upgrade1) {
     upgradeVar.addEventListener("click", function(){
         if (cookies >= cost) {
             cookies -= cost;
-            powerSys*=2;
             updateCPS();
             updateDisplay();
             calcTotalCPS();
             loopthrough(loopedVar);
             upgradeVar.remove()
+            console.log("first test")
+            if (powerList.includes(scaler)) {
+                console.log("second test")
+                for (i=0;i<powerList.length;i++) {
+                    if (scaler==powerList[i]) {
+                        powerSys[i]*=2
+                        console.log("third test")
+                        
+                } 
+            }
+        } else {
+            console.log("test failed")
         }
+    } 
 })}
 
 function makeCookieProgressBar() {
@@ -150,23 +169,23 @@ function makeCookieProgressBar() {
 }}
 
 function calcTotalCPS() {
-    totalCPS=((grandmas*grandmaPower)+(farm*5*farmPower)+(factory*20*factoryPower)+(portal*100*portalPower))
+    totalCPS=((grandmas*powerSys[0])+(farm*5*powerSys[1])+(factory*20*powerSys[2])+(portal*100*powerSys[3]))
+    console.log(powerSys)
     updateCPS()
 }
 // cheat sheet cost=10000,powerSys=grandmaPower,upgradeVar=firstUpgrade,loopedVar=upgrade1
 function produceCookies() {
-    cookies += (grandmas*grandmaPower);
-    cookies += (farm*5*farmPower);
-    cookies += (factory*20*factoryPower);
-    cookies += (portal*100*portalPower);
+    cookies += (grandmas*powerSys[0]);
+    cookies += (farm*5*powerSys[1]);
+    cookies += (factory*20*powerSys[2]);
+    cookies += (portal*100*powerSys[3]);
     updateDisplay();
     calcTotalCPS();
 }
-
+cookies+=10000000
 addUpgrade();
-addUpgrade(50000,farmPower,upgrade2nd,upgrade2);
-addUpgrade(200000,factoryPower,upgrade3rd,upgrade3);
-addUpgrade(800000,portalPower,upgrade4th,upgrade4);
+addUpgrade(50000,'farmPower',upgrade2nd,upgrade2);
+addUpgrade(200000,'factoryPower',upgrade3rd,upgrade3);
+addUpgrade(800000,'portalPower',upgrade4th,upgrade4);
 setInterval(produceCookies, 1000);
-
 setInterval(makeCookieProgressBar, 500);
